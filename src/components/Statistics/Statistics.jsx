@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 import s from './Statistics.module.css';
 
 export default function Statistics({ stats, total, positivePercentage }) {
@@ -6,25 +6,27 @@ export default function Statistics({ stats, total, positivePercentage }) {
     <ul className={s.list}>
       {stats.map(([name, value]) => {
         return (
-          <li className={s.text}>
+          <li key={name} className={s.text}>
             {name}: {value}
           </li>
         );
       })}
-      <li className={s.text}>Total: {total}</li>
-      <li className={s.text}>Positive feedback: {positivePercentage}%</li>
+      <li key={'total'} className={s.text}>
+        Total: {total}
+      </li>
+      <li key={'feedback'} className={s.text}>
+        Positive feedback: {positivePercentage}%
+      </li>
     </ul>
   );
 }
 
 Statistics.propTypes = {
   stats: PropTypes.arrayOf(
-    PropTypes.exact({
-      good: PropTypes.number.isRequired,
-      neutral: PropTypes.number.isRequired,
-      bad: PropTypes.number.isRequired,
-    }),
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    ),
   ).isRequired,
-  total: PropTypes.func.isRequired,
-  positivePercentage: PropTypes.func.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: number.isRequired,
 };

@@ -41,7 +41,7 @@ export class App extends Component {
     const stats = Object.entries(this.state);
     const total = this.countTotalFeedback();
     const options = Object.keys(this.state);
-
+    console.log(stats);
     return (
       <div>
         <Section title="Please leave feedback">
