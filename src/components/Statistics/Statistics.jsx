@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import uppCase from 'utility/uppCase';
 import s from './Statistics.module.css';
 
 export default function Statistics({ stats, total, positivePercentage }) {
@@ -8,7 +7,7 @@ export default function Statistics({ stats, total, positivePercentage }) {
       {stats.map(([name, value]) => {
         return (
           <li className={s.text}>
-            {uppCase(name)}: {value}
+            {name}: {value}
           </li>
         );
       })}
