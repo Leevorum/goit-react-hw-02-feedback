@@ -14,16 +14,14 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
               onLeaveFeedback(option);
             }}
           >
-            {capitalizeStr(option)}
+            {option}
           </button>
         );
       })}
     </>
   );
 }
-function capitalizeStr(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+
 FeedbackOptions.propTypes = {
   options: PropTypes.array.isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
